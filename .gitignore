@@ -1,0 +1,23 @@
+# Python flotsam
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+build/
+dist/
+
+# Test jetsam
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Editor barnacles
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Local voyage output
+*.gpx
+voyage-*.json
