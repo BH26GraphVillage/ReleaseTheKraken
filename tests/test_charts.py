@@ -1,6 +1,6 @@
 import math
 
-from krakenctl.charts import Waypoint, bearing, haversine
+from krakenctl.charts import Waypoint, bearing, haversine, normalise_longitude
 
 LONDON = Waypoint(51.5074, -0.1278, "London")
 NEW_YORK = Waypoint(40.7128, -74.0060, "New York")
@@ -19,3 +19,8 @@ def test_waypoint_parse():
     assert mark.latitude == 12.5
     assert mark.longitude == -3.25
     assert mark.name == "buoy"
+
+
+def test_antimeridian_longitude_is_folded():
+    assert normalise_longitude(190.0) == -170.0
+    assert Waypoint.parse("0,540").longitude == -180.0

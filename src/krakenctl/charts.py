@@ -19,7 +19,12 @@ class Waypoint:
     @classmethod
     def parse(cls, raw: str, name: str = "unnamed mark") -> "Waypoint":
         lat_str, _, lon_str = raw.partition(",")
-        return cls(float(lat_str.strip()), float(lon_str.strip()), name)
+        return cls(float(lat_str.strip()), normalise_longitude(float(lon_str.strip())), name)
+
+
+def normalise_longitude(longitude: float) -> float:
+    """Fold a longitude back into [-180, 180) so courses across the antimeridian hold true."""
+    return (longitude + 180.0) % 360.0 - 180.0
 
 
 def haversine(start: Waypoint, end: Waypoint) -> float:
