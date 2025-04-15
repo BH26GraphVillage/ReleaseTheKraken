@@ -3,6 +3,17 @@
 All notable changes to `krakenctl` are logged here by the Quartermaster.
 Sailings are recorded in the order they left port.
 
+## [1.1.0] - 2025-04-15
+
+### Added
+
+- Depth soundings with tide correction and under-keel clearance checks.
+- `krakenctl sounding` helm command.
+
+### Fixed
+
+- Bearing drift on courses crossing the antimeridian.
+
 ## [1.0.0] - 2025-01-21
 
 ### Added
