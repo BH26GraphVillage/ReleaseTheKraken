@@ -3,6 +3,16 @@
 All notable changes to `krakenctl` are logged here by the Quartermaster.
 Sailings are recorded in the order they left port.
 
+## [2.0.0] - 2025-05-27
+
+### Added
+
+- GPX chart export for the fleet's chart plotters (`krakenctl chart`).
+
+### Changed
+
+- Releases are cut by the internal Deckhand CI rig; see [RELEASING.md](RELEASING.md).
+
 ## [1.1.0] - 2025-04-15
 
 ### Added

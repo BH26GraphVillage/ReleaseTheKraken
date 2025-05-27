@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 
 from .charts import Waypoint, bearing, haversine
+from .gpx import to_gpx
 from .soundings import Sounding, is_safe, under_keel_clearance
 
 
@@ -20,6 +21,11 @@ def build_parser() -> argparse.ArgumentParser:
     sounding.add_argument("--depth", type=float, required=True, help="Echo sounder reading in metres")
     sounding.add_argument("--tide", type=float, default=0.0, help="Tide offset in metres")
     sounding.add_argument("--draught", type=float, required=True, help="Vessel draught in metres")
+
+    chart = sub.add_parser("chart", help="Export a plotted course")
+    chart.add_argument("marks", nargs="+", help='Waypoints, e.g. "51.5074,-0.1278"')
+    chart.add_argument("--out", required=True, help="Destination GPX file")
+    chart.add_argument("--name", default="S.S. Kraken voyage", help="Voyage name")
 
     return parser
 
@@ -38,6 +44,12 @@ def main(argv: list[str] | None = None) -> int:
         clearance = under_keel_clearance(reading, args.draught)
         verdict = "safe passage" if is_safe(reading, args.draught) else "SHOAL WATER - come about"
         print(f"Clearance: {clearance:.2f} m ({verdict})")
+
+    if args.command == "chart":
+        track = [Waypoint.parse(raw, f"mark {index}") for index, raw in enumerate(args.marks, start=1)]
+        with open(args.out, "w", encoding="utf-8") as handle:
+            handle.write(to_gpx(track, name=args.name))
+        print(f"Charted {len(track)} marks to {args.out}")
 
     return 0
 
