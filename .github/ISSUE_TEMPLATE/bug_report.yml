@@ -1,0 +1,34 @@
+name: Bug on deck
+description: Report something that is taking on water
+title: "[bug] "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: Thank ye for reporting. Fill the log below so the crew can find the leak.
+  - type: input
+    id: version
+    attributes:
+      label: krakenctl version
+      placeholder: "2.0.0"
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What did the console show, and what did you expect instead?
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      render: shell
+  - type: checkboxes
+    id: secrets
+    attributes:
+      label: Confirmations
+      options:
+        - label: I have removed any tokens, coordinates or crew details from the logs above.
+          required: true
