@@ -3,6 +3,12 @@
 All notable changes to `krakenctl` are logged here by the Quartermaster.
 Sailings are recorded in the order they left port.
 
+## [2.1.0] - 2025-07-29
+
+### Added
+
+- Tide predictions from a simplified harmonic table (`krakenctl.tides`).
+
 ## [2.0.0] - 2025-05-27
 
 ### Added
