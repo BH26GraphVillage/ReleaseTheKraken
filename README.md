@@ -10,7 +10,8 @@ bearings and export charts for the fleet's navigation consoles.
 ```bash
 pip install krakenctl
 krakenctl bearing --from "51.5074,-0.1278" --to "40.7128,-74.0060"
-krakenctl chart export --format gpx --out voyage.gpx
+krakenctl sounding --depth 8.0 --tide 1.5 --draught 4.0
+krakenctl chart "51.5074,-0.1278" "49.6337,-1.6221" --out voyage.gpx
 ```
 
 ## Crew
@@ -35,7 +36,9 @@ raised them has long since been cut loose.
 ## Documentation
 
 - [Changelog](docs/CHANGELOG.md)
+- [Release procedure](docs/RELEASING.md)
 - [Crew handbook](CONTRIBUTING.md)
+- [Security policy](SECURITY.md)
 
 ## Licence
 

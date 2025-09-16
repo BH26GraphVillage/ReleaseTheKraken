@@ -3,6 +3,16 @@
 All notable changes to `krakenctl` are logged here by the Quartermaster.
 Sailings are recorded in the order they left port.
 
+## [2.2.0] - 2025-09-16
+
+### Added
+
+- Security policy and supported-hull table.
+
+### Changed
+
+- README brought in line with the current helm commands.
+
 ## [2.1.0] - 2025-07-29
 
 ### Added
